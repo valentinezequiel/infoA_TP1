@@ -29,8 +29,10 @@ public class Bolsa {
      * @param peso El peso maximo que puede contener la bolsa
      */
     public Bolsa (String nombre, int peso) {
-        // TODO - Implementar metodo
-        PESO_MAXIMO = 0; // Ojo, esta linea no es valida
+        this.PESO_MAXIMO=peso;
+        this.nombre=nombre;
+        this.pesoActual=0;
+        this.porNombre=new TreeMap<String,Elemento>();
     }
 
     /**
@@ -52,7 +54,15 @@ public class Bolsa {
      */
     public void addElemento (Elemento obj) {
         // TODO - Implementar metodo
-
+        int peso_disponible=PESO_MAXIMO-pesoActual;
+        if(obj.getPeso()<=peso_disponible && porNombre.get(obj.getNombre())==null){
+            porNombre.put(obj.getNombre(),obj);
+            pesoActual+=obj.getPeso();
+        }
+        else{
+            System.out.println(this.nombre+": No se puede agregar "+obj.getNombre());
+        }
+        
     }
 
     /**
@@ -63,8 +73,18 @@ public class Bolsa {
      * @return el elemento eliminado, o null si no existe ese elemento a remover
      */
     public Elemento delElemento (String nombre) {
-        // TODO - Implementar metodo
-        return null;
+        Elemento elem=porNombre.get(nombre);
+        if(elem==null){
+            return null;
+        }
+        else{
+            
+            pesoActual-=elem.getPeso();
+            return porNombre.remove(nombre);
+            
+        }
+        
+        
     }
 
     /**
@@ -73,8 +93,8 @@ public class Bolsa {
      * @return ArrayList<Elemento> lista con los elementos de la bolsa.
      */
     public ArrayList<Elemento> getElementosEnLaBolsa() {
-        // TODO - Implementar metodo
-        return null;
+         
+        return new ArrayList<Elemento>(porNombre.values());
     }
 
     /**
@@ -87,7 +107,19 @@ public class Bolsa {
      */
     public ArrayList<Elemento> getElementosConPrefijo(String pre) {
         // TODO - Implementar metodo
-        return null;
+        //ArrayList<String> keys=new ArrayList<String> (porNombre.keySet());
+        ArrayList<Elemento> keys_found=new ArrayList<Elemento>();
+        for(String key:porNombre.keySet()){
+            if(key.startsWith(pre)){
+                //keys_found.add(key);
+                keys_found.add(porNombre.get(key));
+            }
+        
+        }
+        
+        
+        
+        return keys_found;
     }
 
     /**
