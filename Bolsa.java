@@ -53,7 +53,7 @@ public class Bolsa {
      * @param obj El elemento a agregar en la bolsa.
      */
     public void addElemento (Elemento obj) {
-        // TODO - Implementar metodo
+       
         int peso_disponible=PESO_MAXIMO-pesoActual;
         if(obj.getPeso()<=peso_disponible && porNombre.get(obj.getNombre())==null){
             porNombre.put(obj.getNombre(),obj);
@@ -116,8 +116,7 @@ public class Bolsa {
             }
         
         }
-        
-        
+             
         
         return keys_found;
     }
@@ -130,8 +129,7 @@ public class Bolsa {
      * @return El peso máximo a agregar.
      */
     public int getPesoLibre () {
-        // TODO - Implementar metodo
-        return -1;
+        return PESO_MAXIMO-pesoActual;
     }
 
     /**
@@ -141,6 +139,7 @@ public class Bolsa {
      *   @param peso El peso a quitar/agregar.
      */
     public void addPeso (int peso) {
+        pesoActual+=peso;
         // TODO - Implementar metodo
 
     }

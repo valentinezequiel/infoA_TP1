@@ -28,9 +28,13 @@ public class Personaje {
      * @param peso El peso maximo que puede transportar el personaje.
      */
     public Personaje (String nombre, Integer vida, Integer peso) {
-        // TODO - Implementar metodo
-        MAX_VIDA = 0;          // Ojo, esta linea no es valida
-        PESO_MAXIMO_BOLSA = 0; // Ojo, esta linea no es valida
+        this.nombre=nombre;
+        MAX_VIDA=vida;
+        this.vida=vida;
+        PESO_MAXIMO_BOLSA=peso;
+        bolsa=null;
+        caldero=null;
+        objeto=null;
     }
 
     /**
@@ -49,7 +53,26 @@ public class Personaje {
      * @param bolsa La nueva bolsa del personaje.
      */
     public void setBolsa(Bolsa bolsa) {
-        // TODO - Implementar metodo
+        if(bolsa.getPesoMaximo()<=PESO_MAXIMO_BOLSA){
+
+            if(this.bolsa==null){
+                this.bolsa=bolsa;
+            }
+            else if(this.bolsa.getPesoMaximo() <= bolsa.getPesoMaximo()){
+                
+                bolsa.getMapaDeElementos().putAll(this.bolsa.getMapaDeElementos());
+                this.bolsa=bolsa;
+            }
+            else{
+                System.out.println("Bolsa inapropiada");
+            }
+
+        }
+        else{
+            System.out.println("Bolsa inapropiada");
+        }
+
+        
 
     }
 
@@ -70,7 +93,16 @@ public class Personaje {
      * para agregar a la bolsa"
      */
     public void guardarElemento() {
-        // TODO - Implementar metodo
+        if(objeto==null){
+            System.out.println("No hay elemento para agregar a la bolsa");
+        }
+        else if((bolsa.getPesoActual()+objeto.getPeso())<=PESO_MAXIMO_BOLSA){
+            bolsa.addElemento(objeto);
+            objeto=null;
+        }
+        else{
+            return;
+        }
 
     }
 
@@ -85,7 +117,10 @@ public class Personaje {
      * @param nombre El elemento a tomar de la bolsa.
      */
     public void tomarElemento (String nombre) {
-        // TODO - Implementar metodo
+        objeto=bolsa.delElemento(nombre);
+        if(objeto==null){
+            System.out.println("No se cuenta con el "+nombre);
+        }
 
     }
     
