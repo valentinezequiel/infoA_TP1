@@ -157,7 +157,21 @@ public class Personaje {
      * @param receta
      */
     public void prepararReceta (Receta receta) {
-        // TODO - Implementar metodo
+        caldero.setReceta(receta);
+        //borrar de la bolsa los elementos de la receta
+        //y agregarlos al caldero
+        for (Elemento e : bolsa.getElementosEnLaBolsa() ) {
+
+            caldero.addIngrediente(bolsa.delElemento(e.getNombre()));
+        }
+
+        if(caldero.verificarIngredientes()){
+            caldero.prepararPocima();
+        }
+        else{
+            System.out.println("Faltan "+caldero.getIngredientesFaltantes().size()+" ingredientes para "+receta.getNombre());
+        }
+        
 
     }
 

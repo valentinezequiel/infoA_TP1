@@ -29,10 +29,9 @@ public class Receta {
      * @param nombre El nombre de la receta.
      */
     public Receta (String nombre) {
-        // TODO - Implementar metodo
+        
         this.nombre=nombre;
         this.cerrada=false;
-        //cerrarReceta();
         this.ingredientes=new TreeSet<String>();
 
     }
@@ -46,7 +45,6 @@ public class Receta {
      * @param ingrediente El ingrediente a agregar.
      */
     public void addIngrediente(String ingrediente) {
-        // TODO - Implementar metodo
         if(!isCerrada()){
             this.ingredientes.add(ingrediente);
         }
@@ -58,7 +56,7 @@ public class Receta {
      * @return La cantidad de ingredientes de la receta.
      */
     public int getCantidadIngredientes () {
-        // TODO - Implementar metodo
+       
         return this.ingredientes.size();
     }
 
@@ -80,7 +78,7 @@ public class Receta {
      * @return true si se pudo cerrar la receta, false en caso contrario
      */
     public Boolean cerrarReceta () {
-        // TODO - Implementar metodo
+       
         if(this.getCantidadIngredientes()>=2){
             this.cerrada=true;
             return true;

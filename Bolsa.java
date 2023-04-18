@@ -106,8 +106,7 @@ public class Bolsa {
      * cumplen con el criterio.
      */
     public ArrayList<Elemento> getElementosConPrefijo(String pre) {
-        // TODO - Implementar metodo
-        //ArrayList<String> keys=new ArrayList<String> (porNombre.keySet());
+        
         ArrayList<Elemento> keys_found=new ArrayList<Elemento>();
         for(String key:porNombre.keySet()){
             if(key.startsWith(pre)){
@@ -140,7 +139,6 @@ public class Bolsa {
      */
     public void addPeso (int peso) {
         pesoActual+=peso;
-        // TODO - Implementar metodo
 
     }
 

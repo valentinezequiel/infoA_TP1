@@ -1,10 +1,10 @@
 public class TestPersonaje 
 {
-    public void ejecutarTests () {
+  public static void main(String[] args){
       testPersonajePrecheck();
     }
     
-    public void testPersonajePrecheck() {
+    public static void testPersonajePrecheck() {
         Personaje mago = new Personaje("Gandalf", 100, 60);
         Bolsa bolsa = new Bolsa("Mochila",50);
         mago.setBolsa(bolsa);
